@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const userRoutes = require('./routes/UserRoutes.js');
-const taskRoutes = require('./routes/taskRoutes');
+const userRoutes = require('./routes/userRoutes'); 
+const taskRoutes = require('./routes/taskRoutes'); 
 
-dotenv.config();
+dotenv.config(); 
 
 const app = express();
 app.use(express.json());
@@ -13,7 +13,8 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}).then(() => console.log('Conectado ao MongoDB'))
+})
+  .then(() => console.log('Conectado ao MongoDB'))
   .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
 
 // Rotas
@@ -21,4 +22,3 @@ app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);
 
 module.exports = app;
-
